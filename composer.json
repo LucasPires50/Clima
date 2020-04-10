@@ -1,0 +1,13 @@
+{
+    "name": "vendor/info-climatica",
+    "description": "Description of project InfoClimatica.",
+    "authors": [
+        {
+            "name": "wagner",
+            "email": "wagner@dextak.com.br"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "6.5.2"
+    }
+}

@@ -1,29 +1,30 @@
 <?php
 
-namespace Classes;
+namespace Classes\Modelo;
 
 class Clima {
-    public $cidade;
+
     public $codCidade;
+    public $cidade;
     public $temperatura;
     public $velocidadeVento;
     public $nascerDoSol;
-    public $amanhecer;
     public $porDoSol;
     public $humidade;
-    public $pressoa;
+    public $pressao;
     public $descricao;
     public $icone;
 
     //Converte de kelvin para Celsius.
     public function getTemperaturaCelsius() : float {
-        $calculo = $this->temperatura - 273.15;
-        return $calculo;
+        return $this->temperatura - 273.15;
     }
 
     //Converte de kelvin para Fahrenheit.
     public function getTemperaturaFahrenheit() : float {
-        $calculo = ($this->temperatura - 273.15) * (9) / 5 + 32;
-        return $calculo;
+        return ($this->temperatura - 273.15) * (9) / 5 + 32;
     }
+
 }
+
+?>

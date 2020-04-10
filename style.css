@@ -1,0 +1,120 @@
+.background{
+    position: fixed;
+    width: 100%;
+    left: 0%;
+    height: 100%;
+    background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(51,102,153,1) 0%, rgba(68,116,163,1) 90% );
+}
+
+
+.weather {
+    position: absolute;
+    width: 250px;
+    height: 400px;
+    background: #e76300;
+    border-radius: 13px;
+    box-shadow: 1px 1px 14px 3px rgba(0,0,0,.30);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.weather:hover{
+    box-shadow: 1px 1px 14px 3px rgba(0,0,0,.40);
+    transform: translate(-50%, -52%);
+}
+
+.fundo1{
+	background-image: url('https://i.pinimg.com/originals/b9/8a/89/b98a89b2b03cc5cd320084574f3ba5ea.gif');
+	width: 100%;
+	border-radius: 13px;
+	height: 100%;
+	opacity: 0.8;
+	background-size: cover;
+	position: absolute;
+}
+
+.tempo{
+	width: 80%;
+	height: auto;
+	background: #fff;
+	border-radius: 9px;
+	z-index: 100;
+	position: relative;
+	margin: 0px auto;
+	top: 40px;
+	padding: 5px;
+	padding-bottom: 9px;
+}
+
+h1{
+	margin-left: 10px;
+}
+
+.weather h2{
+	position: relative;
+	text-align: center;
+	color: #fff;
+	top: 36px;
+}
+
+.tempo h1{
+	font-size: 130%;
+	margin-left: 5%;
+}
+
+.right{
+	position: absolute;
+	right: 10px;
+  float: right;
+	top: 5px;
+}
+
+.right i{
+	  background: #ffe6bf;
+    border-radius: 5px;
+    padding: 5px;
+	  display: inline-block;
+	  left: -5px;
+	 position: relative;
+}
+
+.right p{
+	font-size: 11px;
+}
+
+.right span{
+	font-size: 12px;
+	display: block;
+	margin-top: 3px;
+}
+
+i{
+	left: -5px;
+	position: relative;
+}
+
+@media screen and (max-width: 400px){
+    .weather{
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+        overflow: auto;
+    }
+
+    h2{
+        font-size: 200%;
+        top: 20px !important;
+    }
+
+    .fundo1{
+        border-radius: 0px;
+    }
+
+    .weather:hover{
+        box-shadow: 1px 1px 14px 3px rgba(0,0,0,.40);
+        transform: translate(-50%, -50%);
+    }
+}
