@@ -19,11 +19,10 @@ $clima = $openWheater->getClima();
 
 <div class="weather">
 		<div class="fundo1"></div>
-	
 		<h2>
 			<i class="fas fa-map-marker-alt"></i>
 			<?php echo $clima->cidade;?>
-	</h2>
+	    </h2>
 	 <div class="tempo">
 		 <h1><?php echo $clima->getTemperaturaCelsius();?>°</h1>
          <h1><?php echo $clima->getTemperaturaFahrenheit();?>°F</h1>
