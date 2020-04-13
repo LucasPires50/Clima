@@ -2,6 +2,7 @@
 
 require 'vendor/autoload.php';
 require 'Modelo/Clima.php';
+require 'acessos.php';
 
 use GuzzleHttp\Client;
 use Classes\Modelo\Clima;
@@ -22,6 +23,7 @@ class OpenWheatherApi {
     /**
      * Vai no site openweathermap.org e captura informações de clima
      */
+    
     private function getDataWheather(): object {
         $client = new Client([
             'headers' => [
@@ -46,6 +48,8 @@ class OpenWheatherApi {
     }
     
     public function getClima(): Clima {
+        $acesso = new acesso();
+        $acesso->newAcesso();
         //Recupera os dados de atualização
         $conteudoAtulizacao = file_get_contents('./cache/controle_cache.txt');
         
@@ -58,12 +62,14 @@ class OpenWheatherApi {
             //Atualizao cache
             $objGenerico = $this->getDataWheather();
             $arrayAtualizacao[0] = time();
-        } else{
-            //Busca a partir do cache
             $conteudoArquivo = file_get_contents('./cache/clima.txt');
             $objGenerico = unserialize($conteudoArquivo); 
             $dadosArquivo = $arrayAtualizacao[0]."#".$arrayAtualizacao[1];
-            file_put_contents("", $dadosArquivo);
+            file_put_contents("./cache/controle_cache.txt", $dadosArquivo);
+        } else{
+            //Busca a partir do cache
+            $conteudoArquivo = file_get_contents("./cache/clima.txt");
+            $objGenerico = $conteudoArquivo;
         }
 
         $cli = new Clima();
@@ -78,6 +84,7 @@ class OpenWheatherApi {
         $cli->pressao = $objGenerico->main->pressure;
         $cli->descricao = $objGenerico->weather[0]->description;
         $cli->icone = $objGenerico->weather[0]->icon;
+        $cli->acessos =  $acesso->getAcessos();
         
         return $cli;
     }

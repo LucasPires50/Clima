@@ -26,7 +26,7 @@ $clima = $openWheater->getClima();
 	 <div class="tempo">
 		 <h1><?php echo $clima->getTemperaturaCelsius();?>°</h1>
          <h1><?php echo $clima->getTemperaturaFahrenheit();?>°F</h1>
-         <h1><?php echo $clima->temperatura;?>K</h1>
+         <h1><?php echo $clima->getTemperaturaCelsius() - 273.15;?>K</h1>
 		 <div class="right">
 			 <span><i class="fas fa-cloud-rain"></i>
 				   <?php echo $clima->humidade;?>
@@ -38,6 +38,7 @@ $clima = $openWheater->getClima();
              <?php echo $clima->pressao;?>
 			 </span>
              <span><?php echo $clima->descricao ?></span>
+			 <span>Acessos <?php echo $clima->acessos?></span>
 		 </div>
 	</div>
 </div>
