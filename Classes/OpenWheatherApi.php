@@ -28,7 +28,7 @@ class OpenWheatherApi {
                 'Content-Type' => 'application/json',
             ]
         ]);
-
+-
         $urlCompleta = $this->url . "?id=" . $this->id . "&appid=" . $this->appid;
 
         $request = $client->request('GET', $urlCompleta);
@@ -37,13 +37,20 @@ class OpenWheatherApi {
 
         //Converter para objeto
         $objClima = json_decode($clima);
+        $objSerializado = serialize($objClima);
+        $caminhoArquivo =  "./cache/clima.txt";
+
+        file_put_contents($caminhoArquivo, $objSerializado);
 
         return $objClima;
     }
     
     public function getClima(): Clima {
-        $objGenerico = $this->getDataWheather();
-        
+        //$objGenerico = $this->getDataWheather();
+        $conteudoArquivo = file_get_contents('./cache/clima.txt');
+
+        $objGenerico = unserialize($conteudoArquivo); 
+
         $cli = new Clima();
         
         $cli->temperatura = $objGenerico->main->temp;
