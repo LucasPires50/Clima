@@ -46,10 +46,25 @@ class OpenWheatherApi {
     }
     
     public function getClima(): Clima {
-        //$objGenerico = $this->getDataWheather();
-        $conteudoArquivo = file_get_contents('./cache/clima.txt');
+        //Recupera os dados de atualização
+        $conteudoAtulizacao = file_get_contents('./cache/controle_cache.txt');
+        
+        //Transoforma a string em array
+        $arrayAtualizacao = explode("#", $conteudoAtulizacao);
+        $dataAtualizacao = $arrayAtualizacao[0];
+        $dataAtual =   time();
 
-        $objGenerico = unserialize($conteudoArquivo); 
+        if ($dataAtual - $dataAtualizacao >= 300) {
+            //Atualizao cache
+            $objGenerico = $this->getDataWheather();
+            $arrayAtualizacao[0] = time();
+        } else{
+            //Busca a partir do cache
+            $conteudoArquivo = file_get_contents('./cache/clima.txt');
+            $objGenerico = unserialize($conteudoArquivo); 
+            $dadosArquivo = $arrayAtualizacao[0]."#".$arrayAtualizacao[1];
+            file_put_contents("", $dadosArquivo);
+        }
 
         $cli = new Clima();
         
