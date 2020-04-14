@@ -2,8 +2,7 @@
 
 class acesso{
     public function newAcesso(){
-        $acessos =  (int) file_get_contents('./acessos/acessos.txt');
-        file_put_contents("./acessos/acessos.txt", $acessos + 1);
+        file_put_contents("./acessos/acessos.txt", (int) file_get_contents('./acessos/acessos.txt') + 1);
     }
 
     public function getAcessos(){
