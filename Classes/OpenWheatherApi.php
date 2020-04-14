@@ -69,7 +69,7 @@ class OpenWheatherApi {
         } else{
             //Busca a partir do cache
             $conteudoArquivo = file_get_contents("./cache/clima.txt");
-            $objGenerico = $conteudoArquivo;
+            $objGenerico = unserialize($conteudoArquivo);
         }
 
         $cli = new Clima();
